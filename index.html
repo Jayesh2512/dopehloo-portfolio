@@ -421,13 +421,40 @@
       object-fit: cover;
     }
 
+    .drive-thumb-poster {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      text-align: center;
+      background: radial-gradient(circle at center, #1b1b1b 0%, #050505 100%);
+    }
+
+    .drive-thumb-brand {
+      font-family: 'VT323', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      color: #a8a8a8;
+      margin-bottom: 6px;
+    }
+
+    .drive-thumb-title {
+      font-family: 'Silkscreen', monospace;
+      font-size: 1.05rem;
+      color: #fff;
+      line-height: 1.3;
+    }
+
     .film-play-badge {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.32);
+      background: rgba(0, 0, 0, 0.34);
     }
 
     .film-play-badge span {
@@ -451,6 +478,17 @@
       font-size: 1rem;
     }
 
+    .film-client-tag {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background: #fff;
+      color: #000;
+      padding: 2px 8px;
+      font-family: 'Silkscreen', monospace;
+      font-size: 0.68rem;
+    }
+
     .film-body {
       padding: 18px;
       display: flex;
@@ -468,6 +506,13 @@
     .film-brief {
       color: #d2d2d2;
       font-size: 0.94rem;
+    }
+
+    .kroslo-showcase {
+      border: 2px solid #fff;
+      background: #090909;
+      padding: 22px;
+      margin-top: 16px;
     }
 
     .about-top {
@@ -857,6 +902,7 @@
 
   <main class="container">
 
+    <!-- ==================== HOME PAGE ==================== -->
     <section id="page-home" class="page-section active">
       <div class="theatre-wrapper">
         <div class="curtain-left"></div>
@@ -916,6 +962,20 @@
 
       <div class="sprocket-bar"></div>
 
+      <!-- FEATURED CLIENT SECTION ON HOME PAGE: KROSLO (ONLY 2 VIDEOS) -->
+      <div class="kroslo-showcase">
+        <div class="section-header" style="margin-bottom:18px;">
+          <div>
+            <div class="box-label">CLIENT SPOTLIGHT // BRAND CAMPAIGN</div>
+            <h2 class="pixel-head">KROSLO</h2>
+          </div>
+          <button class="btn-outline" onclick="switchPage('work')">ALL KROSLO &amp; STUDIO WORK →</button>
+        </div>
+        <div id="home-kroslo-grid" class="work-grid"></div>
+      </div>
+
+      <div class="sprocket-bar"></div>
+
       <div class="section-header">
         <div>
           <div class="box-label">FEATURED REELS</div>
@@ -926,6 +986,7 @@
       <div id="home-work-preview" class="work-grid"></div>
     </section>
 
+    <!-- ==================== WORK PAGE ==================== -->
     <section id="page-work" class="page-section">
       <div class="section-header">
         <div>
@@ -934,6 +995,7 @@
         </div>
         <div class="filter-row" id="work-filters">
           <button class="filter-btn active" data-filter="ALL">ALL</button>
+          <button class="filter-btn" data-filter="KROSLO">KROSLO</button>
           <button class="filter-btn" data-filter="Short Film">SHORT FILMS</button>
           <button class="filter-btn" data-filter="Music Video">MUSIC VIDEOS</button>
           <button class="filter-btn" data-filter="Commercial">COMMERCIALS</button>
@@ -943,6 +1005,7 @@
       <div id="work-grid" class="work-grid"></div>
     </section>
 
+    <!-- ==================== ABOUT US PAGE ==================== -->
     <section id="page-about" class="page-section">
       <div class="section-header">
         <div>
@@ -1009,6 +1072,7 @@
       </div>
     </section>
 
+    <!-- ==================== CONTACT US PAGE ==================== -->
     <section id="page-contact" class="page-section">
       <div class="gov-form-shell">
         <div class="gov-header">
@@ -1116,53 +1180,165 @@
   </footer>
 
   <script>
+    // Paste Sutta's 11-character YouTube video ID (from youtube.com/watch?v=VIDEO_ID) below for inline playback:
+    const SUTTA_YOUTUBE_ID = '';
+
     const PROJECTS = [
       {
-        id: 'gemini',
+        id: 'kroslo-zenith',
         reel: 'REEL 01',
+        title: 'Kroslo — Zenith Series',
+        category: 'Commercial',
+        client: 'KROSLO',
+        featuredKrosloHome: true,
+        year: '2026',
+        duration: 'COMMERCIAL',
+        sourceType: 'drive',
+        driveFileId: '1n8JCSDpGyn9_GJBH2_yLonJaUf_eW3f5',
+        externalUrl: 'https://drive.google.com/file/d/1n8JCSDpGyn9_GJBH2_yLonJaUf_eW3f5/view?usp=drivesdk',
+        externalLabel: 'OPEN IN GOOGLE DRIVE ↗',
+        thumb: 'https://drive.google.com/thumbnail?id=1n8JCSDpGyn9_GJBH2_yLonJaUf_eW3f5&sz=w1000',
+        brief: 'Cookware that turns heads—stay-cool handles and effortless release captured in sleek, high-contrast commercial frames for the Kroslo Zenith Series.'
+      },
+      {
+        id: 'kroslo-kitchen-essentials',
+        reel: 'REEL 02',
+        title: 'Kroslo — Kitchen Essentials',
+        category: 'Commercial',
+        client: 'KROSLO',
+        featuredKrosloHome: true,
+        year: '2026',
+        duration: 'COMMERCIAL',
+        sourceType: 'drive',
+        driveFileId: '17mj5g3W62Q9YLjbPrGQHtC3cB_ygPdhs',
+        externalUrl: 'https://drive.google.com/file/d/17mj5g3W62Q9YLjbPrGQHtC3cB_ygPdhs/view?usp=drivesdk',
+        externalLabel: 'OPEN IN GOOGLE DRIVE ↗',
+        thumb: 'https://drive.google.com/thumbnail?id=17mj5g3W62Q9YLjbPrGQHtC3cB_ygPdhs&sz=w1000',
+        brief: 'A crisp brand spot highlighting everyday culinary essentials with rhythmic cuts, tactile close-ups, and clean visual storytelling.'
+      },
+      {
+        id: 'kroslo-cast-iron',
+        reel: 'REEL 03',
+        title: 'Kroslo — Cast Iron',
+        category: 'Commercial',
+        client: 'KROSLO',
+        featuredKrosloHome: false,
+        year: '2026',
+        duration: 'COMMERCIAL',
+        sourceType: 'drive',
+        driveFileId: '1F-E3ByLVelYddr_90KgplliC42ZZ2gg4',
+        externalUrl: 'https://drive.google.com/file/d/1F-E3ByLVelYddr_90KgplliC42ZZ2gg4/view?usp=drivesdk',
+        externalLabel: 'OPEN IN GOOGLE DRIVE ↗',
+        thumb: 'https://drive.google.com/thumbnail?id=1F-E3ByLVelYddr_90KgplliC42ZZ2gg4&sz=w1000',
+        brief: 'Heavy-duty craftsmanship framed with dramatic lighting, rich texture, and bold product-first cinematography for Kroslo Cast Iron.'
+      },
+      {
+        id: 'kroslo-seasoning',
+        reel: 'REEL 04',
+        title: 'Kroslo — Seasoning',
+        category: 'Commercial',
+        client: 'KROSLO',
+        featuredKrosloHome: false,
+        year: '2026',
+        duration: 'COMMERCIAL',
+        sourceType: 'drive',
+        driveFileId: '1Fl1iREeuEzICoeuNEa5iY-HUQJ9PZ3zc',
+        externalUrl: 'https://drive.google.com/file/d/1Fl1iREeuEzICoeuNEa5iY-HUQJ9PZ3zc/view?usp=drivesdk',
+        externalLabel: 'OPEN IN GOOGLE DRIVE ↗',
+        thumb: 'https://drive.google.com/thumbnail?id=1Fl1iREeuEzICoeuNEa5iY-HUQJ9PZ3zc&sz=w1000',
+        brief: 'Step-by-step visual guide and brand film showcasing the care, heat, and finish behind seasoning Kroslo cookware.'
+      },
+      {
+        id: 'kroslo-stay-cool-handles',
+        reel: 'REEL 05',
+        title: 'Kroslo — Stay Cool Handles',
+        category: 'Commercial',
+        client: 'KROSLO',
+        featuredKrosloHome: false,
+        year: '2026',
+        duration: 'COMMERCIAL',
+        sourceType: 'drive',
+        driveFileId: '15s6TzLo8Ic6kcCZXbpmTDZdryKeJ6OIG',
+        externalUrl: 'https://drive.google.com/file/d/15s6TzLo8Ic6kcCZXbpmTDZdryKeJ6OIG/view?usp=drivesdk',
+        externalLabel: 'OPEN IN GOOGLE DRIVE ↗',
+        thumb: 'https://drive.google.com/thumbnail?id=15s6TzLo8Ic6kcCZXbpmTDZdryKeJ6OIG&sz=w1000',
+        brief: 'Narrative-driven commercial vignette blending relatable everyday dialogue with sharp product demonstration for Kroslo.'
+      },
+      {
+        id: 'kroslo-sfr',
+        reel: 'REEL 06',
+        title: 'Kroslo — SFR',
+        category: 'Commercial',
+        client: 'KROSLO',
+        featuredKrosloHome: false,
+        year: '2026',
+        duration: 'COMMERCIAL',
+        sourceType: 'drive',
+        driveFileId: '1phapbSbIGZm_0PzoXnfnPf4FpT6olEf_',
+        externalUrl: 'https://drive.google.com/file/d/1phapbSbIGZm_0PzoXnfnPf4FpT6olEf_/view?usp=drivesdk',
+        externalLabel: 'OPEN IN GOOGLE DRIVE ↗',
+        thumb: 'https://drive.google.com/thumbnail?id=1phapbSbIGZm_0PzoXnfnPf4FpT6olEf_&sz=w1000',
+        brief: 'Fast-paced commercial visual piece produced for Kroslo, engineered for high retention and crisp product clarity.'
+      },
+      {
+        id: 'gemini',
+        reel: 'REEL 07',
         title: 'Gemini | A Short Film',
         category: 'Short Film',
         year: '2024',
         duration: '05:35',
+        sourceType: 'youtube',
         videoId: 'XxbhMj9VJ58',
-        youtubeUrl: 'https://www.youtube.com/watch?v=XxbhMj9VJ58',
+        externalUrl: 'https://www.youtube.com/watch?v=XxbhMj9VJ58',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
         thumb: 'https://i.ytimg.com/vi/XxbhMj9VJ58/hqdefault.jpg',
         brief: 'An atmospheric psychological short film exploring duality, tension, and quiet confrontation—crafted with stark monochrome framing and deliberate pacing.'
       },
       {
         id: 'sparx',
-        reel: 'REEL 02',
+        reel: 'REEL 08',
         title: 'Sparx AD | Test Shoot',
         category: 'Commercial',
+        client: 'SPARX',
         year: '2026',
         duration: '01:29',
+        sourceType: 'youtube',
         videoId: 'TCGuJzXYW4Y',
-        youtubeUrl: 'https://www.youtube.com/watch?v=TCGuJzXYW4Y',
+        externalUrl: 'https://www.youtube.com/watch?v=TCGuJzXYW4Y',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
         thumb: 'https://i.ytimg.com/vi/TCGuJzXYW4Y/hqdefault.jpg',
         brief: 'High-energy commercial test shoot showcasing kinetic movement, street-lit textures, and punchy editorial cuts built for modern brand storytelling.'
       },
       {
         id: 'akatsuki',
-        reel: 'REEL 03',
+        reel: 'REEL 09',
         title: 'Akatsuki | Seedhe Maut ft. Raga (Unofficial MV)',
         category: 'Music Video',
         year: '2024',
         duration: '02:38',
+        sourceType: 'youtube',
         videoId: 'CGDzzHH7AXk',
-        youtubeUrl: 'https://www.youtube.com/watch?v=CGDzzHH7AXk',
+        externalUrl: 'https://www.youtube.com/watch?v=CGDzzHH7AXk',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
         thumb: 'https://i.ytimg.com/vi/CGDzzHH7AXk/hqdefault.jpg',
         brief: 'An unofficial music video fueled by gritty urban visuals, aggressive camera movement, and rhythmic cutaways matching the raw intensity of the track.'
       },
       {
         id: 'sutta',
-        reel: 'REEL 04',
+        reel: 'REEL 10',
         title: 'Sutta | Short Film | Do Pehloo',
         category: 'Short Film',
         year: '2024',
         duration: '03:16',
-        videoId: '',
-        youtubeUrl: 'https://www.youtube.com/@DoPehloo/videos',
-        thumb: 'assets/sutta.jpg',
+        sourceType: 'youtube',
+        videoId: SUTTA_YOUTUBE_ID,
+        externalUrl: SUTTA_YOUTUBE_ID
+          ? `https://www.youtube.com/watch?v=${SUTTA_YOUTUBE_ID}`
+          : 'https://www.youtube.com/@DoPehloo/videos',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
+        thumb: SUTTA_YOUTUBE_ID
+          ? `https://i.ytimg.com/vi/${SUTTA_YOUTUBE_ID}/hqdefault.jpg`
+          : 'assets/sutta.jpg',
         brief: 'A raw, grounded Do Pehloo short film capturing smoke-lit late-night tension, tight character framing, and stark monochrome mood.'
       }
     ];
@@ -1224,19 +1400,52 @@
       const card = document.createElement('article');
       card.className = 'film-card';
       card.onclick = () => openModal(project);
-      card.innerHTML = `
-        <div class="film-thumb">
-          <img src="${project.thumb}" alt="${project.title}" loading="lazy"
-               onerror="this.style.display='none'" />
-          <div class="film-play-badge"><span>▶ SCREEN FILM</span></div>
-          <div class="film-duration">${project.duration}</div>
-        </div>
-        <div class="film-body">
-          <div class="film-meta">${project.reel} // ${project.category.toUpperCase()} // ${project.year}</div>
-          <h3 class="pixel-head" style="font-size:1rem;">${project.title}</h3>
-          <p class="film-brief">${project.brief}</p>
-        </div>
+
+      const thumbWrap = document.createElement('div');
+      thumbWrap.className = 'film-thumb';
+
+      const img = document.createElement('img');
+      img.src = project.thumb;
+      img.alt = project.title;
+      img.loading = 'lazy';
+      img.addEventListener('error', () => {
+        const poster = document.createElement('div');
+        poster.className = 'drive-thumb-poster';
+        poster.innerHTML = `
+          <div class="drive-thumb-brand">${project.client || 'DO PEHLOO'} // 35MM</div>
+          <div class="drive-thumb-title">${project.title}</div>
+        `;
+        img.replaceWith(poster);
+      });
+      thumbWrap.appendChild(img);
+
+      if (project.client) {
+        const badge = document.createElement('div');
+        badge.className = 'film-client-tag';
+        badge.textContent = project.client;
+        thumbWrap.appendChild(badge);
+      }
+
+      const playBadge = document.createElement('div');
+      playBadge.className = 'film-play-badge';
+      playBadge.innerHTML = '<span>▶ SCREEN FILM</span>';
+      thumbWrap.appendChild(playBadge);
+
+      const durBadge = document.createElement('div');
+      durBadge.className = 'film-duration';
+      durBadge.textContent = project.duration;
+      thumbWrap.appendChild(durBadge);
+
+      const body = document.createElement('div');
+      body.className = 'film-body';
+      body.innerHTML = `
+        <div class="film-meta">${project.reel} // ${project.category.toUpperCase()} // ${project.year}</div>
+        <h3 class="pixel-head" style="font-size:1rem;">${project.title}</h3>
+        <p class="film-brief">${project.brief}</p>
       `;
+
+      card.appendChild(thumbWrap);
+      card.appendChild(body);
       return card;
     }
 
@@ -1245,14 +1454,24 @@
       grid.innerHTML = '';
       const filtered = filter === 'ALL'
         ? PROJECTS
-        : PROJECTS.filter(p => p.category === filter);
+        : filter === 'KROSLO'
+          ? PROJECTS.filter(p => p.client === 'KROSLO')
+          : PROJECTS.filter(p => p.category === filter);
       filtered.forEach(p => grid.appendChild(createFilmCard(p)));
     }
 
-    function renderHomePreview() {
+    function renderHomeSections() {
+      const krosloGrid = document.getElementById('home-kroslo-grid');
+      krosloGrid.innerHTML = '';
+      PROJECTS.filter(p => p.featuredKrosloHome).slice(0, 2).forEach(p => {
+        krosloGrid.appendChild(createFilmCard(p));
+      });
+
       const homeGrid = document.getElementById('home-work-preview');
       homeGrid.innerHTML = '';
-      PROJECTS.forEach(p => homeGrid.appendChild(createFilmCard(p)));
+      PROJECTS.filter(p => p.sourceType === 'youtube').forEach(p => {
+        homeGrid.appendChild(createFilmCard(p));
+      });
     }
 
     document.querySelectorAll('#work-filters .filter-btn').forEach(btn => {
@@ -1294,13 +1513,27 @@
     function openModal(project) {
       const modal = document.getElementById('film-modal');
       const videoWrap = document.getElementById('modal-video-wrap');
+      const clientPart = project.client ? `${project.client} // ` : '';
       document.getElementById('modal-meta').textContent =
-        `${project.category.toUpperCase()} // ${project.reel} // ${project.year} // ${project.duration}`;
+        `${clientPart}${project.category.toUpperCase()} // ${project.reel} // ${project.year}`;
       document.getElementById('modal-title').textContent = project.title;
       document.getElementById('modal-brief').textContent = project.brief;
-      document.getElementById('modal-yt-link').href = project.youtubeUrl;
 
-      if (project.videoId) {
+      const extLink = document.getElementById('modal-yt-link');
+      extLink.href = project.externalUrl;
+      extLink.textContent = project.externalLabel || 'OPEN VIDEO ↗';
+
+      if (project.sourceType === 'drive' && project.driveFileId) {
+        const previewUrl = `https://drive.google.com/file/d/${project.driveFileId}/preview`;
+        videoWrap.innerHTML = `
+          <iframe
+            src="${previewUrl}"
+            title="${project.title}"
+            allow="autoplay; fullscreen"
+            allowfullscreen
+          ></iframe>
+        `;
+      } else if (project.videoId) {
         const embedUrl = `https://www.youtube-nocookie.com/embed/${project.videoId}?rel=0&modestbranding=1&playsinline=1`;
         videoWrap.innerHTML = `
           <iframe
@@ -1313,13 +1546,18 @@
         `;
       } else {
         videoWrap.innerHTML = `
-          <div style="text-align:center; padding:24px;">
+          <div style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#000;">
             <img src="${project.thumb}" alt="${project.title}"
-                 style="max-height:260px; margin:0 auto 16px; border:1px solid #fff;"
+                 style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.35;"
                  onerror="this.style.display='none'" />
-            <a href="${project.youtubeUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary">
-              PLAY "${project.title}" ON YOUTUBE ↗
-            </a>
+            <div style="position:relative; z-index:2; text-align:center; padding:24px;">
+              <div class="pixel-mono" style="font-size:1.1rem; color:#ccc; margin-bottom:10px;">
+                SCREENING ROOM // YOUTUBE RELEASE
+              </div>
+              <a href="${project.externalUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                ▶ PLAY "${project.title}" ON YOUTUBE ↗
+              </a>
+            </div>
           </div>
         `;
       }
@@ -1383,7 +1621,7 @@
       submitBtn.textContent = 'SUBMIT OFFICIAL FORM →';
     });
 
-    renderHomePreview();
+    renderHomeSections();
     renderWork('ALL');
     renderTeam();
   </script>
