@@ -950,13 +950,12 @@
 
       <div class="client-strip">
         <div class="pixel-mono" style="font-size:1.15rem; color:var(--muted);">
-          WORKED WITH // BRAND COLLABORATIONS
+          COLLABORATIONS
         </div>
         <div class="client-pills">
           <span class="client-pill">KROSLO</span>
           <span class="client-pill">MYNTRA</span>
           <span class="client-pill">FIND MY KIDS</span>
-          <span class="client-pill">SPARX</span>
         </div>
       </div>
 
@@ -1181,12 +1180,72 @@
 
   <script>
     // Paste Sutta's 11-character YouTube video ID (from youtube.com/watch?v=VIDEO_ID) below for inline playback:
-    const SUTTA_YOUTUBE_ID = '';
+    const SUTTA_YOUTUBE_ID = 'ockZbjg9uCc';
 
     const PROJECTS = [
       {
-        id: 'kroslo-zenith',
+        id: 'gemini',
         reel: 'REEL 01',
+        title: 'Gemini | A Short Film',
+        category: 'Short Film',
+        year: '2024',
+        duration: '05:35',
+        sourceType: 'youtube',
+        videoId: 'XxbhMj9VJ58',
+        externalUrl: 'https://www.youtube.com/watch?v=XxbhMj9VJ58',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
+        thumb: 'https://i.ytimg.com/vi/XxbhMj9VJ58/hqdefault.jpg',
+        brief: 'An atmospheric psychological short film exploring duality, tension, and quiet confrontation—crafted with stark monochrome framing and deliberate pacing.'
+      },
+      {
+        id: 'sutta',
+        reel: 'REEL 02',
+        title: 'Sutta | Short Film | Do Pehloo',
+        category: 'Short Film',
+        year: '2024',
+        duration: '03:16',
+        sourceType: 'youtube',
+        videoId: SUTTA_YOUTUBE_ID,
+        externalUrl: SUTTA_YOUTUBE_ID
+          ? `https://www.youtube.com/watch?v=${SUTTA_YOUTUBE_ID}`
+          : 'https://www.youtube.com/@DoPehloo/videos',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
+        thumb: SUTTA_YOUTUBE_ID
+          ? `https://i.ytimg.com/vi/${SUTTA_YOUTUBE_ID}/hqdefault.jpg`
+          : 'assets/sutta.jpg',
+        brief: 'A raw, grounded Do Pehloo short film capturing smoke-lit late-night tension, tight character framing, and stark monochrome mood.'
+      },
+      {
+        id: 'akatsuki',
+        reel: 'REEL 03',
+        title: 'Akatsuki | Seedhe Maut ft. Raga (Unofficial MV)',
+        category: 'Music Video',
+        year: '2024',
+        duration: '02:38',
+        sourceType: 'youtube',
+        videoId: 'CGDzzHH7AXk',
+        externalUrl: 'https://www.youtube.com/watch?v=CGDzzHH7AXk',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
+        thumb: 'https://i.ytimg.com/vi/CGDzzHH7AXk/hqdefault.jpg',
+        brief: 'An unofficial music video fueled by gritty urban visuals, aggressive camera movement, and rhythmic cutaways matching the raw intensity of the track.'
+      },
+      {
+        id: 'sparx',
+        reel: 'REEL 04',
+        title: 'Sparx AD | Test Shoot',
+        category: 'Commercial',
+        year: '2026',
+        duration: '01:29',
+        sourceType: 'youtube',
+        videoId: 'TCGuJzXYW4Y',
+        externalUrl: 'https://www.youtube.com/watch?v=TCGuJzXYW4Y',
+        externalLabel: 'WATCH ON YOUTUBE ↗',
+        thumb: 'https://i.ytimg.com/vi/TCGuJzXYW4Y/hqdefault.jpg',
+        brief: 'High-energy commercial test shoot showcasing kinetic movement, street-lit textures, and punchy editorial cuts built for modern brand storytelling.'
+      },
+      {
+        id: 'kroslo-zenith',
+        reel: 'REEL 05',
         title: 'Kroslo — Zenith Series',
         category: 'Commercial',
         client: 'KROSLO',
@@ -1202,7 +1261,7 @@
       },
       {
         id: 'kroslo-kitchen-essentials',
-        reel: 'REEL 02',
+        reel: 'REEL 06',
         title: 'Kroslo — Kitchen Essentials',
         category: 'Commercial',
         client: 'KROSLO',
@@ -1218,7 +1277,7 @@
       },
       {
         id: 'kroslo-cast-iron',
-        reel: 'REEL 03',
+        reel: 'REEL 07',
         title: 'Kroslo — Cast Iron',
         category: 'Commercial',
         client: 'KROSLO',
@@ -1234,7 +1293,7 @@
       },
       {
         id: 'kroslo-seasoning',
-        reel: 'REEL 04',
+        reel: 'REEL 08',
         title: 'Kroslo — Seasoning',
         category: 'Commercial',
         client: 'KROSLO',
@@ -1250,7 +1309,7 @@
       },
       {
         id: 'kroslo-stay-cool-handles',
-        reel: 'REEL 05',
+        reel: 'REEL 09',
         title: 'Kroslo — Stay Cool Handles',
         category: 'Commercial',
         client: 'KROSLO',
@@ -1266,7 +1325,7 @@
       },
       {
         id: 'kroslo-sfr',
-        reel: 'REEL 06',
+        reel: 'REEL 10',
         title: 'Kroslo — SFR',
         category: 'Commercial',
         client: 'KROSLO',
@@ -1279,67 +1338,6 @@
         externalLabel: 'OPEN IN GOOGLE DRIVE ↗',
         thumb: 'https://drive.google.com/thumbnail?id=1phapbSbIGZm_0PzoXnfnPf4FpT6olEf_&sz=w1000',
         brief: 'Fast-paced commercial visual piece produced for Kroslo, engineered for high retention and crisp product clarity.'
-      },
-      {
-        id: 'gemini',
-        reel: 'REEL 07',
-        title: 'Gemini | A Short Film',
-        category: 'Short Film',
-        year: '2024',
-        duration: '05:35',
-        sourceType: 'youtube',
-        videoId: 'XxbhMj9VJ58',
-        externalUrl: 'https://www.youtube.com/watch?v=XxbhMj9VJ58',
-        externalLabel: 'WATCH ON YOUTUBE ↗',
-        thumb: 'https://i.ytimg.com/vi/XxbhMj9VJ58/hqdefault.jpg',
-        brief: 'An atmospheric psychological short film exploring duality, tension, and quiet confrontation—crafted with stark monochrome framing and deliberate pacing.'
-      },
-      {
-        id: 'sparx',
-        reel: 'REEL 08',
-        title: 'Sparx AD | Test Shoot',
-        category: 'Commercial',
-        client: 'SPARX',
-        year: '2026',
-        duration: '01:29',
-        sourceType: 'youtube',
-        videoId: 'TCGuJzXYW4Y',
-        externalUrl: 'https://www.youtube.com/watch?v=TCGuJzXYW4Y',
-        externalLabel: 'WATCH ON YOUTUBE ↗',
-        thumb: 'https://i.ytimg.com/vi/TCGuJzXYW4Y/hqdefault.jpg',
-        brief: 'High-energy commercial test shoot showcasing kinetic movement, street-lit textures, and punchy editorial cuts built for modern brand storytelling.'
-      },
-      {
-        id: 'akatsuki',
-        reel: 'REEL 09',
-        title: 'Akatsuki | Seedhe Maut ft. Raga (Unofficial MV)',
-        category: 'Music Video',
-        year: '2024',
-        duration: '02:38',
-        sourceType: 'youtube',
-        videoId: 'CGDzzHH7AXk',
-        externalUrl: 'https://www.youtube.com/watch?v=CGDzzHH7AXk',
-        externalLabel: 'WATCH ON YOUTUBE ↗',
-        thumb: 'https://i.ytimg.com/vi/CGDzzHH7AXk/hqdefault.jpg',
-        brief: 'An unofficial music video fueled by gritty urban visuals, aggressive camera movement, and rhythmic cutaways matching the raw intensity of the track.'
-      },
-      {
-        id: 'sutta',
-        reel: 'REEL 10',
-        title: 'Sutta | Short Film | Do Pehloo',
-        category: 'Short Film',
-        year: '2024',
-        duration: '03:16',
-        sourceType: 'youtube',
-        videoId: SUTTA_YOUTUBE_ID,
-        externalUrl: SUTTA_YOUTUBE_ID
-          ? `https://www.youtube.com/watch?v=${SUTTA_YOUTUBE_ID}`
-          : 'https://www.youtube.com/@DoPehloo/videos',
-        externalLabel: 'WATCH ON YOUTUBE ↗',
-        thumb: SUTTA_YOUTUBE_ID
-          ? `https://i.ytimg.com/vi/${SUTTA_YOUTUBE_ID}/hqdefault.jpg`
-          : 'assets/sutta.jpg',
-        brief: 'A raw, grounded Do Pehloo short film capturing smoke-lit late-night tension, tight character framing, and stark monochrome mood.'
       }
     ];
 
